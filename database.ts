@@ -2,6 +2,20 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabaseSync('sfng.db');
 
+export interface Vehicle {
+  Id : number,
+  VIN : string,
+  RegistrationNumber : string,
+  OdometerValue : string
+}
+
+export interface Stakeholder {
+  Id : number,
+  FirstName : string,
+  LastName : string,
+  Type : string
+}
+
 export const initializeDatabase = async () => {
     await db.execAsync(
       `CREATE TABLE IF NOT EXISTS Vehicles (
@@ -64,10 +78,17 @@ export const getStakholder = async ()  => {
 };
 
 export const getInspector = async ()  => {
-  return await db.getAllAsync(  
+  return await db.getFirstAsync<Stakeholder>(  
     'SELECT * FROM Stakeholders Where Type = "Inspector";'      
   );
 };
+
+export const getVehicleByVin = async (vin : string) => {
+  return await db.getFirstSync<Vehicle>(  
+    'SELECT * FROM Vehicles Where Vin = ?;',
+    [vin]      
+  );
+}
 
 
 

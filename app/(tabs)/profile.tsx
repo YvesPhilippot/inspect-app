@@ -1,11 +1,11 @@
 import { StyleSheet, View, Text } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import { getInspector } from '@/database';
+import { getInspector, Stakeholder } from '@/database';
 
 
 export default function Profile() {
 
-  const [inspector, setInspector] = useState<any[]>([]);
+  const [inspector, setInspector] = useState<Stakeholder | null>(null);
 
   
    // Fonction pour rafraîchir la liste des tweets
@@ -20,8 +20,8 @@ export default function Profile() {
   }, []);
   return (
     <View style={styles.container}>
-      <Text>{inspector[0]?.FirstName}</Text>
-      <Text>{inspector[0]?.LastName}</Text>
+      <Text style={styles.label}>{inspector?.FirstName}</Text>
+      <Text style={styles.label}>{inspector?.LastName}</Text>
     </View>
   );
 }
@@ -29,7 +29,13 @@ export default function Profile() {
 const styles = StyleSheet.create({
   
   container: {
-    flexDirection: 'row',
-    gap: 8,
+    flexDirection : 'row',
+    borderWidth: 1,
+    borderColor : '#CCCCCC',
+    padding: 10,
+    margin:10
   },
+  label :{
+    padding:5
+  }
 });
