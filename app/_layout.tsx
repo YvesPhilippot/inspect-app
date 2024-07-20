@@ -38,6 +38,7 @@ export default function RootLayout() {
       <Stack initialRouteName='home'>
         <Stack.Screen name="home" options={{ headerShown: false }}/>
         <Stack.Screen name="inspection" options={{ headerShown: false }}/>
+        <Stack.Screen name="signature" options={{ headerShown: false }}/>
         <Stack.Screen name="profile" options={{ headerShown: false }}/>
               
       </Stack>

@@ -14,6 +14,13 @@ const InspectionScreen : React.FC = () => {
               color="#0F508A"
           />
       </View>
+      <View style={styles.button}>
+      <Button
+              onPress={() =>navigation.navigate('signature')}
+              title="Sign"
+              color="#0F508A"
+          />
+      </View>
       
     </View>    
     </>    
