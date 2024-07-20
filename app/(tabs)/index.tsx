@@ -1,47 +1,28 @@
-import TweetList from '@/components/index/TweetList';
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import AddTweetModal from '@/components/index/AddTweetModal';
-import { getTweets } from '@/database';
-
+import { getVehicles } from '@/database';
 
 const HomeScreen: React.FC = () => {
 
-  const [showModal, setShowModal] = useState(false);
-  const [tweets, setTweets] = useState<any[]>([]);
 
-  useEffect(() => {
-    // Initialiser la liste des tweets lorsque le composant est monté
-    refreshTweets();
-  }, []);
-
-  const handleAddTweet = () => {
-   
-    setShowModal(true); // Affichez la modal pour ajouter un tweet
-  };
+  const [vehicles, setVehicles] = useState<any[]>([]);
 
    // Fonction pour rafraîchir la liste des tweets
-   const refreshTweets = async () => {
-    const tweetsFromDb = await getTweets();
-    setTweets(tweetsFromDb);
-  };
+   const refreshVehicles = async () => {
+    const vehicleFromDb = await getVehicles();
+    setVehicles(vehicleFromDb);
+  };  
+  useEffect(() => {
+   
+    refreshVehicles();
+  }, []);
 
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    refreshTweets(); // Rafraîchir les tweets après la fermeture de la modal
-  };
 
   return (
    <>  
-   <TweetList listTweets={tweets}/>
-    {/* Bouton "+" */}
-    <TouchableOpacity style={styles.floatingButton} onPress={handleAddTweet}>
-        <FontAwesome name="plus" size={24} color="white" />
-      </TouchableOpacity>
-      {/* Affichage conditionnel de la modal */}
-      {showModal && <AddTweetModal onClose={handleCloseModal} />}
+      
    </>
     
 

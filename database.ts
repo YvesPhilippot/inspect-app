@@ -1,61 +1,79 @@
 import * as SQLite from 'expo-sqlite';
 
-const db = SQLite.openDatabaseSync('tweets.db');
+const db = SQLite.openDatabaseSync('sfng.db');
 
 export const initializeDatabase = async () => {
     await db.execAsync(
-      `CREATE TABLE IF NOT EXISTS tweets (
+      `CREATE TABLE IF NOT EXISTS Vehicles (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        userName TEXT,
-        userHandle TEXT,
-        profileImage TEXT,
-        content TEXT,
-        timestamp DATE
+        VIN TEXT,
+        RegistrationNumber TEXT,
+        OdometerValue TEXT
       );
-       CREATE TABLE IF NOT EXISTS replies (
+      
+       CREATE TABLE IF NOT EXISTS Stakeholders (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        tweetId INTEGER,
-        userName TEXT,
-        userHandle TEXT,
-        content TEXT,
-        FOREIGN KEY (tweetId) REFERENCES tweets (id)
-      );`
+        FirstName TEXT,
+        LastName TEXT,
+        Type TEXT
+      );
+
+      CREATE TABLE IF NOT EXISTS Inspections (
+        InspectionId INTEGER PRIMARY KEY AUTOINCREMENT,
+        VehicleTechnicalId INTEGER NOT NULL,
+        DriverTechnicalId INTEGER NOT NULL,
+        InspectorTechnicalId INTEGER NOT NULL,
+        InspectionDate DATE,
+        Result TEXT,
+        FOREIGN KEY (VehicleTechnicalId) REFERENCES Vehicles(id),
+        FOREIGN KEY (DriverTechnicalId) REFERENCES Stakeholders(id),
+        FOREIGN KEY (InspectorTechnicalId) REFERENCES Stakeholders(id)
+      );
+      
+      INSERT INTO Vehicles (VIN, RegistrationNumber, OdometerValue) 
+      VALUES ('5J8TB18228A801930', 'AA-123-BB', '13000');
+      
+      INSERT INTO Stakeholders (FirstName, LastName, Type) 
+      VALUES ('Yves', 'Philippot', 'Inspector');
+      
+      INSERT INTO Stakeholders (FirstName, LastName, Type) 
+      VALUES ('Coline', 'Bourdeau', 'Driver');
+      
+      `
     );   
 
 };
 
-export const addTweet = async (userName: string, userHandle: string, profileImage: string, content: string, timestamp: string) => {
+export const addInspections = async (vehicleTechnicalId: number, driverTechnicalId: number, inspectorTechnicalId: number, inspectionDate : Date, result: string) => {
   return await db.runAsync(
-      'INSERT INTO tweets (userName, userHandle, profileImage, content, timestamp) VALUES (?, ?, ?, ?, ?);',
-      [userName, userHandle, profileImage, content, timestamp]
+      'INSERT INTO inspections (VehicleTechnicalId, DriverTechnicalId, InspectorTechnicalId, InspectionDate, Result) VALUES (?, ?, ?, ?, ?);',
+      [vehicleTechnicalId, driverTechnicalId, inspectorTechnicalId, inspectionDate.toISOString(), result]
     );
 };
 
-export const getTweets = async ()  => {
+export const getVehicles = async ()  => {
     return await db.getAllAsync(  
-      'SELECT * FROM tweets;'      
+      'SELECT * FROM Vehicles;'      
     );
 };
 
-export const addReply = async (tweetId: number, userName: string, userHandle: string, content: string) => {
-    return await db.runAsync(    
-      'INSERT INTO replies (tweetId, userName, userHandle, content) VALUES (?, ?, ?, ?);',
-      [tweetId, userName, userHandle, content]
-    );
-
+export const getStakholder = async ()  => {
+  return await db.getAllAsync(  
+    'SELECT * FROM Stakeholders;'      
+  );
 };
 
-export const getReplies = async (tweetId: number) => {
-    return await db.getAllAsync(  
-   
-      'SELECT * FROM replies WHERE tweetId = ?;',
-      [tweetId]      
-    );
+export const getInspector = async ()  => {
+  return await db.getAllAsync(  
+    'SELECT * FROM Stakeholders Where Type = "Inspector";'      
+  );
 };
+
+
 
 export const deleteAll = async () => {
     return await db.runAsync(    
-      'DELETE FROM tweets'
+      'DELETE FROM Inspections;'
     );
 
 };
