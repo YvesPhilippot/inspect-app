@@ -3,15 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { getInspector, Stakeholder } from '@/database';
 
 
-export default function Profile() {
+export default function Profil() {
 
   const [inspector, setInspector] = useState<Stakeholder | null>(null);
 
   
-   // Fonction pour rafraîchir la liste des tweets
    const refreshInspector = async () => {
-    const vehicleFromDb = await getInspector();
-    setInspector(vehicleFromDb);
+    const retrievedInspector = await getInspector();
+    setInspector(retrievedInspector);
   };
 
   useEffect(() => {

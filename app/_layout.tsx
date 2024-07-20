@@ -10,6 +10,7 @@ import Header from '@/components/Header';
 import { initializeDatabase } from '@/database';
 import { Colors } from '@/constants/Colors';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import Footer from '@/components/Footer';
 
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -39,33 +40,10 @@ export default function RootLayout() {
         <Stack.Screen name="home" options={{ headerShown: false }}/>
         <Stack.Screen name="inspection" options={{ headerShown: false }}/>
         <Stack.Screen name="signature" options={{ headerShown: false }}/>
-        <Stack.Screen name="profile" options={{ headerShown: false }}/>
+        <Stack.Screen name="profil" options={{ headerShown: false }}/>
               
       </Stack>
-     {/*  <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: 'Profile',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'body' : 'body-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs> */}
+      <Footer/>
     </ThemeProvider>
   );
 }

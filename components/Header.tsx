@@ -1,29 +1,61 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, GestureResponderEvent } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from 'expo-router';
 
-const Header: React.FC = () => {
+
+
+const Header = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.headerContainer}>
-      <Image source={require('@/assets/images/Dekra.png')}/>
-      <Text style={styles.headerText}>Insp App</Text>
+      <View style={styles.logoAndTitleContainer}>
+      <TouchableOpacity  onPress={() =>navigation.navigate('home')}>
+        <Image source={require('@/assets/images/Dekra.png')} style={styles.logo} />  
+      </TouchableOpacity>
+        <Text style={styles.headerText}>Insp App</Text>
+      </View>
+      <View style={styles.profile}>
+      <TouchableOpacity  onPress={() =>navigation.navigate('profil')}>
+        <Ionicons name="settings-outline" size={24} color="white" />
+      </TouchableOpacity>
+        
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: 100,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    padding: 10,
     backgroundColor: '#006B52',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    height:100
+  },
+  logoAndTitleContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
-    flexDirection:'row',
-    paddingTop: 20,
+    justifyContent: 'center',
+    flex: 1,
+  },
+  logo: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+    marginRight: 10,
   },
   headerText: {
-    color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
-    paddingLeft : 20
+    color:'#fff'
+  },
+  profile: {
+    position: 'absolute',
+    right: 10,
+    bottom : 25
   },
 });
 
