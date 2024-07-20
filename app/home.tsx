@@ -1,15 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { getVehicles, getVehicleByVin, Vehicle } from '@/database';
+import { useNavigation } from '@react-navigation/native';
+import { getVehicleByVin, Vehicle } from '@/database';
 
 const HomeScreen: React.FC = () => {
 
   const [text, onChangeText] = React.useState('');  
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
+  const navigation = useNavigation();
 
-
+  // 5J8TB18228A801930
   const getVehiclesByVin = async (vin : string) => {
 
     const infoVehicle = await getVehicleByVin(vin); 
@@ -37,23 +38,21 @@ const HomeScreen: React.FC = () => {
    </View>
    {
     vehicle ?
-      <View style={styles.vehicle}>
-  
+      <View style={styles.vehicle}>  
         <Text style={styles.vehicleInfo}>Immatriculation :</Text>
         <Text style={styles.vehicleInfo}>{vehicle?.RegistrationNumber}</Text>
         <Text style={styles.vehicleInfo}>Odometre :</Text>
         <Text style={styles.vehicleInfo}>{vehicle?.OdometerValue} KM</Text>
-     
+        <View style={styles.startInspection}>
+          <Button
+              onPress={() =>navigation.navigate('inspection')}
+              title="Start Inspection"
+              color="#0F508A"
+          />
+      </View>
     </View>
     :<></>
     }
-
-
-
- 
-
-  
-   
   </>
 
   );
@@ -95,8 +94,19 @@ const styles = StyleSheet.create({
     borderColor : '#CCCCCC'
   },
   button:{
-   
-    padding: 10,
+    borderRadius : 3,
+    paddingTop: 6,
+    paddingRight:12,
+    paddingBottom:6,
+    paddingLeft:12
+  },
+  startInspection :{
+    borderRadius : 3,
+    paddingTop: 6,
+    paddingRight:12,
+    paddingBottom:6,
+    paddingLeft:12,
+    width : '100%'
   }
 });
 
