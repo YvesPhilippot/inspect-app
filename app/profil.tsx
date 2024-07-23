@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getInspector, Stakeholder } from '@/database';
 
 
-export default function Profil() {
+export default function ProfilScreen() {
 
   const [inspector, setInspector] = useState<Stakeholder | null>(null);
 

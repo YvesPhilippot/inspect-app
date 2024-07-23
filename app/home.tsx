@@ -6,7 +6,7 @@ import { getVehicleByVin, Vehicle } from '@/database';
 
 const HomeScreen: React.FC = () => {
 
-  const [text, onChangeText] = React.useState('');  
+  const [text, onChangeText] = React.useState('5J8TB18228A801930');  
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
   const navigation = useNavigation();
 

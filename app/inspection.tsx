@@ -1,12 +1,16 @@
+import ExplodedViewSvg from '@/components/ExplodedViewSvg';
 import { useNavigation } from 'expo-router';
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, SafeAreaView } from 'react-native';
 const InspectionScreen : React.FC = () => {
     const navigation = useNavigation();
   return (
     <>
     <View style={styles.container}>
       <Text style={styles.text}>Inspection</Text>
+      <SafeAreaView style={styles.containerVehicle}>
+        <ExplodedViewSvg />
+      </SafeAreaView>
       <View style={styles.button}>
       <Button
               onPress={() =>navigation.navigate('home')}
@@ -14,6 +18,7 @@ const InspectionScreen : React.FC = () => {
               color="#0F508A"
           />
       </View>
+    
       <View style={styles.button}>
       <Button
               onPress={() =>navigation.navigate('signature')}
@@ -35,6 +40,11 @@ const styles = StyleSheet.create({
     padding: 10,
     margin:10,
 
+  },
+  containerVehicle: {
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontSize: 24,
