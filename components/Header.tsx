@@ -9,18 +9,18 @@ export type RootStackParamList = {
 };
 
 const Header = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   return (
     <View style={styles.headerContainer}>
       <View style={styles.logoAndTitleContainer}>
-      <TouchableOpacity  onPress={() =>navigation.navigate('home' as never)}>
+      <TouchableOpacity  onPress={() =>navigation.navigate('home')}>
         <Image source={require('@/assets/images/Dekra.png')} style={styles.logo} />  
       </TouchableOpacity>
         <Text style={styles.headerText}>Insp App</Text>
       </View>
       <View style={styles.profile}>
-      <TouchableOpacity  onPress={() =>navigation.navigate('profil' as never)}>
+      <TouchableOpacity  onPress={() =>navigation.navigate('profil')}>
         <Ionicons name="settings-outline" size={24} color="white" />
       </TouchableOpacity>        
       </View>
