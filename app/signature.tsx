@@ -5,7 +5,7 @@ import Signature, { SignatureViewRef } from 'react-native-signature-canvas';
 
 const SignatureScreen = () => {
   const ref = useRef<SignatureViewRef>(null);
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const handleSignature = (signature: string) => {
     // signature is the base64 encoded string of the signature image
     Alert.alert('Signature Captured', signature);

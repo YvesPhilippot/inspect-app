@@ -3,7 +3,7 @@ import { useNavigation } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, Button, SafeAreaView } from 'react-native';
 const InspectionScreen : React.FC = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
   return (
     <>
     <View style={styles.container}>
