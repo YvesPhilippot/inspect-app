@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, GestureResponderEvent } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from 'expo-router';
 
 
+export type RootStackParamList = {
+  profil: { id: number } | undefined;
+};
 
 const Header = () => {
   const navigation = useNavigation();
@@ -11,16 +14,15 @@ const Header = () => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.logoAndTitleContainer}>
-      <TouchableOpacity  onPress={() =>navigation.navigate('home')}>
+      <TouchableOpacity  onPress={() =>navigation.navigate('home' as never)}>
         <Image source={require('@/assets/images/Dekra.png')} style={styles.logo} />  
       </TouchableOpacity>
         <Text style={styles.headerText}>Insp App</Text>
       </View>
       <View style={styles.profile}>
-      <TouchableOpacity  onPress={() =>navigation.navigate('profil')}>
+      <TouchableOpacity  onPress={() =>navigation.navigate('profil' as never)}>
         <Ionicons name="settings-outline" size={24} color="white" />
-      </TouchableOpacity>
-        
+      </TouchableOpacity>        
       </View>
     </View>
   );
