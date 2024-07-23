@@ -43,7 +43,7 @@ const ExplodedViewSvg = () => {
         {/* Body */}
         <Rect x="180" y="150" width="140" height="50" fill="blue" />
         <Text x="250" y="180" fill="white" fontSize="12" fontWeight="bold" textAnchor="middle">Body</Text>
-        
+
         {/* Roof */}
         <Rect x="210" y="250" width="80" height="30" fill="red" />
         <Text x="250" y="270" fill="white" fontSize="12" fontWeight="bold" textAnchor="middle">Roof</Text>

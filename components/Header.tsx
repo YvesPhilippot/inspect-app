@@ -14,15 +14,15 @@ const Header = () => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.logoAndTitleContainer}>
-      <TouchableOpacity  onPress={() =>navigation.navigate('home')}>
-        <Image source={require('@/assets/images/Dekra.png')} style={styles.logo} />  
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('home')}>
+          <Image source={require('@/assets/images/Dekra.png')} style={styles.logo} />
+        </TouchableOpacity>
         <Text style={styles.headerText}>Insp App</Text>
       </View>
       <View style={styles.profile}>
-      <TouchableOpacity  onPress={() =>navigation.navigate('profil')}>
-        <Ionicons name="settings-outline" size={24} color="white" />
-      </TouchableOpacity>        
+        <TouchableOpacity onPress={() => navigation.navigate('profil')}>
+          <Ionicons name="settings-outline" size={24} color="white" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#006B52',
     justifyContent: 'space-between',
-    height:100
+    height: 100
   },
   logoAndTitleContainer: {
     flexDirection: 'row',
@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color:'#fff'
+    color: '#fff'
   },
   profile: {
     position: 'absolute',
     right: 10,
-    bottom : 25
+    bottom: 25
   },
 });
 

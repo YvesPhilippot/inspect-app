@@ -35,13 +35,13 @@ const SignatureScreen = () => {
         webStyle={style}
       />
       <View style={styles.buttonContainer}>
-        <Button title="Clear"  color="#0F508A" onPress={handleClear} />
-        <Button title="Save"  color="#0F508A" onPress={handleConfirm} />
+        <Button title="Clear" color="#0F508A" onPress={handleClear} />
+        <Button title="Save" color="#0F508A" onPress={handleConfirm} />
         <Button
-              onPress={() =>navigation.navigate('home')}
-              title="Go Back"
-              color="#0F508A"
-          />
+          onPress={() => navigation.navigate('home')}
+          title="Go Back"
+          color="#0F508A"
+        />
       </View>
     </View>
   );
@@ -55,23 +55,23 @@ const style = `
 `;
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection : 'column',
-        borderWidth: 1,
-        borderColor : '#CCCCCC',
-        padding: 10,
-        margin:10,
-        height:200
-    
-      },
+  container: {
+    flexDirection: 'column',
+    borderWidth: 1,
+    borderColor: '#CCCCCC',
+    padding: 10,
+    margin: 10,
+    height: 200
+
+  },
   buttonContainer: {
     flexDirection: 'row',
-    alignContent:'space-evenly',
-    alignItems:'center',
-    borderRadius : 3,
+    alignContent: 'space-evenly',
+    alignItems: 'center',
+    borderRadius: 3,
     paddingTop: 6,
-    paddingRight:12,
-    paddingBottom:6
+    paddingRight: 12,
+    paddingBottom: 6
   },
 });
 

@@ -7,14 +7,14 @@ export default function ProfilScreen() {
 
   const [inspector, setInspector] = useState<Stakeholder | null>(null);
 
-  
-   const refreshInspector = async () => {
+
+  const refreshInspector = async () => {
     const retrievedInspector = await getInspector();
     setInspector(retrievedInspector);
   };
 
   useEffect(() => {
-   
+
     refreshInspector();
   }, []);
   return (
@@ -26,15 +26,15 @@ export default function ProfilScreen() {
 }
 
 const styles = StyleSheet.create({
-  
+
   container: {
-    flexDirection : 'row',
+    flexDirection: 'row',
     borderWidth: 1,
-    borderColor : '#CCCCCC',
+    borderColor: '#CCCCCC',
     padding: 10,
-    margin:10
+    margin: 10
   },
-  label :{
-    padding:5
+  label: {
+    padding: 5
   }
 });

@@ -3,22 +3,22 @@ import * as SQLite from 'expo-sqlite';
 const db = SQLite.openDatabaseSync('sfng.db');
 
 export interface Vehicle {
-  Id : number,
-  VIN : string,
-  RegistrationNumber : string,
-  OdometerValue : string
+  Id: number,
+  VIN: string,
+  RegistrationNumber: string,
+  OdometerValue: string
 }
 
 export interface Stakeholder {
-  Id : number,
-  FirstName : string,
-  LastName : string,
-  Type : string
+  Id: number,
+  FirstName: string,
+  LastName: string,
+  Type: string
 }
 
 export const initializeDatabase = async () => {
-    await db.execAsync(
-      `CREATE TABLE IF NOT EXISTS Vehicles (
+  await db.execAsync(
+    `CREATE TABLE IF NOT EXISTS Vehicles (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         VIN TEXT,
         RegistrationNumber TEXT,
@@ -54,47 +54,47 @@ export const initializeDatabase = async () => {
       VALUES ('Coline', 'Bourdeau', 'Driver');
       
       `
-    );   
+  );
 
 };
 
-export const addInspections = async (vehicleTechnicalId: number, driverTechnicalId: number, inspectorTechnicalId: number, inspectionDate : Date, result: string) => {
+export const addInspections = async (vehicleTechnicalId: number, driverTechnicalId: number, inspectorTechnicalId: number, inspectionDate: Date, result: string) => {
   return await db.runAsync(
-      'INSERT INTO inspections (VehicleTechnicalId, DriverTechnicalId, InspectorTechnicalId, InspectionDate, Result) VALUES (?, ?, ?, ?, ?);',
-      [vehicleTechnicalId, driverTechnicalId, inspectorTechnicalId, inspectionDate.toISOString(), result]
-    );
-};
-
-export const getVehicles = async ()  => {
-    return await db.getAllAsync(  
-      'SELECT * FROM Vehicles;'      
-    );
-};
-
-export const getStakholder = async ()  => {
-  return await db.getAllAsync(  
-    'SELECT * FROM Stakeholders;'      
+    'INSERT INTO inspections (VehicleTechnicalId, DriverTechnicalId, InspectorTechnicalId, InspectionDate, Result) VALUES (?, ?, ?, ?, ?);',
+    [vehicleTechnicalId, driverTechnicalId, inspectorTechnicalId, inspectionDate.toISOString(), result]
   );
 };
 
-export const getInspector = async ()  => {
-  return await db.getFirstAsync<Stakeholder>(  
-    'SELECT * FROM Stakeholders Where Type = "Inspector";'      
+export const getVehicles = async () => {
+  return await db.getAllAsync(
+    'SELECT * FROM Vehicles;'
   );
 };
 
-export const getVehicleByVin = async (vin : string) => {
-  return await db.getFirstSync<Vehicle>(  
+export const getStakholder = async () => {
+  return await db.getAllAsync(
+    'SELECT * FROM Stakeholders;'
+  );
+};
+
+export const getInspector = async () => {
+  return await db.getFirstAsync<Stakeholder>(
+    'SELECT * FROM Stakeholders Where Type = "Inspector";'
+  );
+};
+
+export const getVehicleByVin = async (vin: string) => {
+  return await db.getFirstSync<Vehicle>(
     'SELECT * FROM Vehicles Where Vin = ?;',
-    [vin]      
+    [vin]
   );
 }
 
 
 
 export const deleteAll = async () => {
-    return await db.runAsync(    
-      'DELETE FROM Inspections;'
-    );
+  return await db.runAsync(
+    'DELETE FROM Inspections;'
+  );
 
 };

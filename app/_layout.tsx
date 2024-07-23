@@ -34,7 +34,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
-      initializeDatabase(); 
+      initializeDatabase();
     }
   }, [loaded]);
 
@@ -46,12 +46,12 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Header />
       <Stack.Navigator initialRouteName='home'>
-        <Stack.Screen name="home" component={HomeScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="inspection" component={InspectionScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="signature" component={SignatureScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="profil" component={ProfilScreen} options={{ headerShown: false }}/>              
+        <Stack.Screen name="home" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="inspection" component={InspectionScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="signature" component={SignatureScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="profil" component={ProfilScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
-      <Footer/>
+      <Footer />
     </ThemeProvider>
   );
 }
