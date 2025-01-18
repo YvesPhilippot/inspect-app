@@ -16,6 +16,15 @@ export interface Stakeholder {
   Type: string
 }
 
+export interface Inspection {
+  InspectionId: number,
+  VehicleTechnicalId: number,
+  DriverTechnicalId: number,
+  InspectorTechnicalId: number,
+  InspectionDate: Date,
+  Result: string
+}
+
 export const initializeDatabase = async () => {
   await db.execAsync(
     `CREATE TABLE IF NOT EXISTS Vehicles (
@@ -51,7 +60,7 @@ export const initializeDatabase = async () => {
       VALUES ('Yves', 'Philippot', 'Inspector');
       
       INSERT INTO Stakeholders (FirstName, LastName, Type) 
-      VALUES ('Coline', 'Bourdeau', 'Driver');
+      VALUES ('Coline', 'B', 'Driver');
       
       `
   );
