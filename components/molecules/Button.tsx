@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         margin: 30,
-        borderRadius: 5,
+        borderRadius: 6,
         backgroundColor: '#f0f0f0',
     },
 });
