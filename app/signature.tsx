@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { View, StyleSheet, Button, Alert } from 'react-native';
 import { useNavigation } from 'expo-router';
 import Signature, { SignatureViewRef } from 'react-native-signature-canvas';
+import ButtonWrapper from '@/components/molecules/Button';
 
 const SignatureScreen = () => {
   const ref = useRef<SignatureViewRef>(null);
@@ -34,14 +35,11 @@ const SignatureScreen = () => {
         confirmText="Save"
         webStyle={style}
       />
+     
       <View style={styles.buttonContainer}>
-        <Button title="Clear" color="#0F508A" onPress={handleClear} />
-        <Button title="Save" color="#0F508A" onPress={handleConfirm} />
-        <Button
-          onPress={() => navigation.navigate('home')}
-          title="Go Back"
-          color="#0F508A"
-        />
+        <ButtonWrapper title="Clear" onPress={handleClear} />
+        <ButtonWrapper title="Save" onPress={handleConfirm} />
+        <ButtonWrapper title="Go Back" onPress={() => navigation.navigate('home')} />
       </View>
     </View>
   );
@@ -61,18 +59,15 @@ const styles = StyleSheet.create({
     borderColor: '#CCCCCC',
     padding: 10,
     margin: 10,
-    height: 200
+    height: 400
 
   },
   buttonContainer: {
     flexDirection: 'row',
     alignContent: 'space-evenly',
     alignItems: 'center',
-    borderRadius: 3,
-    paddingTop: 6,
-    paddingRight: 12,
-    paddingBottom: 6
-  },
+    borderRadius: 3
+  }
 });
 
 export default SignatureScreen;

@@ -45,7 +45,7 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.vehicleInfo}>{vehicle?.OdometerValue} KM</Text>
             <View style={styles.startInspection}>
               <Button
-                onPress={() => navigation.navigate('inspection')}
+                onPress={() => navigation.navigate('defects')}
                 title="Start Inspection"
                 color="#0F508A"
               />

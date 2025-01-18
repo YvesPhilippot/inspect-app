@@ -14,9 +14,8 @@ import Header from '@/components/Header';
 import { initializeDatabase } from '@/database';
 import Footer from '@/components/Footer';
 
-// Importez vos composants d'écran ici
 import HomeScreen from './home';
-import InspectionScreen from './inspection';
+import DefectsScreen from './defects';
 import SignatureScreen from './signature';
 import ProfilScreen from './profil';
 
@@ -47,7 +46,7 @@ export default function RootLayout() {
       <Header />
       <Stack.Navigator initialRouteName='home'>
         <Stack.Screen name="home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="inspection" component={InspectionScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="defects" component={DefectsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="signature" component={SignatureScreen} options={{ headerShown: false }} />
         <Stack.Screen name="profil" component={ProfilScreen} options={{ headerShown: false }} />
       </Stack.Navigator>

@@ -2,12 +2,12 @@ import ExplodedViewSvg from '@/components/ExplodedViewSvg';
 import { useNavigation } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, Button, SafeAreaView } from 'react-native';
-const InspectionScreen: React.FC = () => {
+const DefectsScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.text}>Inspection</Text>
+        <Text style={styles.text}>Defects</Text>
         <SafeAreaView style={styles.containerVehicle}>
           <ExplodedViewSvg />
         </SafeAreaView>
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InspectionScreen;
+export default DefectsScreen;
